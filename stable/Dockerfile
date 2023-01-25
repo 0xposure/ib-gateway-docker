@@ -52,8 +52,6 @@ COPY ./scripts /root/scripts
 
 FROM ubuntu:22.04
 
-ENV IB_GATEWAY_VERSION=10.19.1j
-
 WORKDIR /root
 
 # Prepare system
