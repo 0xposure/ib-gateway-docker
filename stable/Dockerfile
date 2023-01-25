@@ -33,7 +33,7 @@ RUN curl -sSL https://storage.googleapis.com/ib-dependencies/ibgateway-${IB_GATE
 # RUN sha256sum --check ./ibgateway-${IB_GATEWAY_VERSION}-standalone-linux-x64.sh.sha256
 RUN chmod a+x ./ibgateway-${IB_GATEWAY_VERSION}-standalone-linux-x64.sh
 RUN ./ibgateway-${IB_GATEWAY_VERSION}-standalone-linux-x64.sh -q -dir /root/Jts/ibgateway/${IB_GATEWAY_VERSION}
-COPY ./stable/config/ibgateway/jts.ini /root/Jts/jts.ini
+COPY ./config/ibgateway/jts.ini /root/Jts/jts.ini
 
 # Install IBC
 RUN curl -sSL https://storage.googleapis.com/ib-dependencies/IBCLinux-${IBC_VERSION}.zip --output IBCLinux-${IBC_VERSION}.zip
@@ -41,10 +41,10 @@ RUN mkdir /root/ibc
 RUN unzip ./IBCLinux-${IBC_VERSION}.zip -d /root/ibc
 RUN chmod -R u+x /root/ibc/*.sh 
 RUN chmod -R u+x /root/ibc/scripts/*.sh
-COPY ./stable/config/ibc/config.ini.tmpl /root/ibc/config.ini.tmpl
+COPY ./config/ibc/config.ini.tmpl /root/ibc/config.ini.tmpl
 
 # Copy scripts
-COPY ./stable/scripts /root/scripts
+COPY ./scripts /root/scripts
 
 #
 # Build Stage: build production image
